@@ -10,6 +10,7 @@ export const Blog: React.FC = () => {
 
   return (
     <div css={wrapper}>
+      <h1>Blog post title</h1>
       <ul>
         {blogPosts.map((blogPost) => (
           <li key={blogPost.id}>
