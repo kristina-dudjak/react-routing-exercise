@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { BlogPost, blogPosts } from 'data';
 import { BlogPostCard } from 'modules';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { wrapper } from './Blog.styles';
 
 export const Blog: React.FC = () => {
@@ -30,7 +30,6 @@ export const Blog: React.FC = () => {
           </li>
         ))}
       </ul>
-      <Outlet />
     </div>
   );
 };
