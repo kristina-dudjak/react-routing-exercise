@@ -22,7 +22,15 @@ export const Header: React.FC<Props> = ({ onLogin }) => {
         >
           Home
         </NavLink>
-        <NavLink css={link} to="info">
+        <NavLink
+          css={link}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? 'red' : '',
+            };
+          }}
+          to="info"
+        >
           Info
         </NavLink>
         <NavLink
