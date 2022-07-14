@@ -9,15 +9,16 @@ import {
 } from './BlogDetails.styles';
 
 export const BlogDetails: React.FC = () => {
-  const params = useParams();
+  const { id } = useParams();
+  const blog = blogPosts.find((blogPost) => blogPost.id.toString() === id);
 
   return (
     <div>
-      {params.id && (
+      {blog && (
         <div css={postContainer}>
-          <p css={postTitle}>{blogPosts[params.id].title}</p>
-          <p css={postDescription}>{blogPosts[params.id].description}</p>
-          <p css={postText}>{blogPosts[params.id].text}</p>
+          <p css={postTitle}>{blog.title}</p>
+          <p css={postDescription}>{blog.description}</p>
+          <p css={postText}>{blog.text}</p>
         </div>
       )}
     </div>

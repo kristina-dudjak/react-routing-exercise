@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Layout } from 'shared';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { Blog, BlogDetails, Home, Info, Login } from 'views';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BlogDetails, Home, Info, Login } from 'views';
 import { BlogPosts } from 'modules';
 
 export const App: React.FC = () => {
@@ -17,20 +17,14 @@ export const App: React.FC = () => {
         <Route path="info" element={<Info />} />
         <Route
           path="blog"
-          element={isLoggedIn ? <Blog /> : <Navigate to="/login" />}
+          element={isLoggedIn ? <Outlet /> : <Navigate to="/login" />}
         >
-          <Route
-            index
-            element={isLoggedIn ? <BlogPosts /> : <Navigate to="/login" />}
-          />
-          <Route
-            path=":id"
-            element={isLoggedIn ? <BlogDetails /> : <Navigate to="/login" />}
-          />
+          <Route index element={<BlogPosts />} />
+          <Route path=":id" element={<BlogDetails />} />
         </Route>
         <Route
           path="login"
-          element={!isLoggedIn ? <Login /> : <Navigate to="/blog" />}
+          element={isLoggedIn ? <Navigate to="/blog" /> : <Login />}
         />
         <Route path="*" element={<p>There's nothing here!</p>} />
       </Route>
